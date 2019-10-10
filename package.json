@@ -4,7 +4,8 @@
   "description": "Simple REST API",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js localhost 8080"
+    "start": "nodemon --exec babel-node src/index.js localhost 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git"
