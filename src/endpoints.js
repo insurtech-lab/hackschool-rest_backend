@@ -83,4 +83,10 @@ module.exports = function(app) {
       temp_order
     });
   });
+
+  app.delete("/api/orders/:id", (req, res) => {
+    const toBeDeleted = utils.findById(req.params.id);
+    utils.deleteById(req.params.id); // delete order with id
+    res.json(toBeDeleted);
+  });
 };
