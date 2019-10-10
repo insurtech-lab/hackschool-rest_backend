@@ -1,13 +1,27 @@
 {
-  "name": "node-sandbox",
+  "name": "hackschool-rest-backend",
   "version": "1.0.0",
-  "description": "Simple Node Sandbox",
+  "description": "Simple REST API",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js localhost 8080"
+    "start": "nodemon --exec babel-node index.js localhost 8080"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "nodemon": "1.18.4"
-  }
+  "repository": {
+    "type": "git"
+  },
+  "author": "Yves Staudenmaier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/insurtech-lab/hackschool-rest_backend/issues"
+  },
+  "dependencies": {
+    "@babel/cli": "7.6.3",
+    "@babel/core": "7.6.3",
+    "@babel/node": "7.6.3",
+    "@babel/preset-env": "7.6.3",
+    "express": "4.17.1",
+    "nodemon": "1.19.3"
+  },
+
+  "keywords": []
 }
