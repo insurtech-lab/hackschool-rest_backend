@@ -8,8 +8,9 @@ module.exports = function(app) {
   app.get("/", (req, res) => {
     res.status(200).send({
       success: "true",
-      message: "get",
-      orders: utils.findAll()
+      code: "200",
+      message: "a test get with no orders sent",
+      orders: null
     });
   });
 
@@ -17,29 +18,28 @@ module.exports = function(app) {
   app.get("/api/orders", (req, res) => {
     res.status(200).send({
       success: "true",
+      code: "200",
       message: "all orders retrieved successfully",
-      orders: db
+      orders: utils.findAll()
     });
   });
 
   // get a specific order identified by id
   app.get("/api/orders/:id", (req, res) => {
     const id = parseInt(req.params.id, 10);
+    const order = utils.findById(id);
 
-    db.map(order => {
-      if (order.id === id) {
-        return res.status(200).send({
-          success: "true",
-          message: "order retrieved successfully",
-          order
-        });
-      }
-    });
-    return res.status(404).send({
-      success: "false",
-      message: `order with id = ${id} does not exist`,
-      orders: null
-    });
+    // check if a order was found, if no return error
+    if (!order) {
+      return res.status(404).send({
+        success: "false",
+        code: "404",
+        message: `order with id = ${id} does not exist`,
+        orders: null
+      });
+    }
+
+    res.json(order);
   });
 
   // insert a new order to db
@@ -48,16 +48,19 @@ module.exports = function(app) {
     if (!req.body.name || !req.body.forename) {
       return res.status(400).send({
         success: "false",
+        code: "400",
         message: "name and/or forename is required"
       });
     } else if (!req.body.street || !req.body.zip || !req.body.town) {
       return res.status(400).send({
         success: "false",
+        code: "400",
         message: "a valid adress is required"
       });
     } else if (!req.body.position) {
       return res.status(400).send({
         success: "false",
+        code: "400",
         message: "a order item is required"
       });
     }
