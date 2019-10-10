@@ -28,3 +28,20 @@ exports.writeToFile = function(order) {
   save(ordersMap);
   return order;
 };
+
+exports.findAll = function() {
+  const ordersMap = open();
+  const all = Object.values(ordersMap);
+  return all;
+};
+
+exports.findById = function(id) {
+  const ordersMap = open();
+  return ordersMap[id];
+};
+
+exports.deleteById = function(id) {
+  const ordersMap = open();
+  delete ordersMap[id];
+  save(ordersMap);
+};
