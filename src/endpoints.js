@@ -5,12 +5,33 @@ const utils = require("./utils.js");
 // eports endpoints for server.js
 module.exports = function(app) {
   // endpoints
+
+  // test get
   app.get("/", (req, res) => {
     res.status(200).send({
       success: "true",
       code: "200",
       message: "a test get with no orders sent",
       orders: null
+    });
+  });
+
+  app.get("/config", (req, res) => {
+    res.status(200).send({
+      success: "true",
+      code: "200",
+      message: "pattern of a order in orders-array",
+      orders: [
+        {
+          id: "number",
+          name: "string",
+          forename: "string",
+          position: "string",
+          street: "string",
+          zip: "string",
+          town: "string"
+        }
+      ]
     });
   });
 
