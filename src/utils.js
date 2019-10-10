@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 
 function getFilename() {
-  return path.resolve(process.cwd(), "/../db/db.js");
+  return path.resolve(process.cwd(), "./db/orders.json");
 }
 
 function open() {
@@ -11,7 +11,8 @@ function open() {
     fs.writeFileSync(dataFilename, JSON.stringify({}));
   }
   const ordersJSON = fs.readFileSync(dataFilename);
-  return JSON.parse(ordersJSON);
+  const ordersMap = JSON.parse(ordersJSON);
+  return ordersMap;
 }
 
 function save(ordersMap) {

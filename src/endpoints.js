@@ -1,4 +1,5 @@
 import db from "../db/db.js";
+import { writeToFile } from "./utils.js";
 
 // eports endpoints for server.js
 module.exports = function(app) {
@@ -68,8 +69,9 @@ module.exports = function(app) {
       zip: req.body.zip,
       town: req.body.town
     };
-    db.push(temp_order); // temp pushed
+    //db.push(temp_order); // temp pushed
     // fs write
+    writeToFile(temp_order);
     return res.status(201).send({
       success: "true",
       message: "order inserted successfully",
