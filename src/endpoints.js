@@ -1,5 +1,6 @@
 import db from "../db/db.js";
 import { writeToFile } from "./utils.js";
+const utils = require("./utils.js");
 
 // eports endpoints for server.js
 module.exports = function(app) {
@@ -7,7 +8,8 @@ module.exports = function(app) {
   app.get("/", (req, res) => {
     res.status(200).send({
       success: "true",
-      message: "get"
+      message: "get",
+      orders: utils.findAll()
     });
   });
 
