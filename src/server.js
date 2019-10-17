@@ -5,7 +5,7 @@ const errorHandler = require('./errorHandler.js');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 8080; //process.env.PORT || 3000;
 
 // Parse incoming request data
 app.use(bodyParser.json());
